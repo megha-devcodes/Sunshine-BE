@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "help_actions",
+  "info": {
+    "singularName": "help-action",
+    "pluralName": "help-actions",
+    "displayName": "HelpAction"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

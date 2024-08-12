@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "become_volunteers",
+  "info": {
+    "singularName": "become-volunteer",
+    "pluralName": "become-volunteers",
+    "displayName": "Become volunteer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "button": {
+      "type": "string"
+    },
+    "buttonUrl": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "headers",
+  "info": {
+    "singularName": "header",
+    "pluralName": "headers",
+    "displayName": "Header",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Email": {
+      "type": "email"
+    },
+    "Contact": {
+      "type": "string"
+    },
+    "media_link": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::media-link.media-link"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "our_programs",
+  "info": {
+    "singularName": "our-program",
+    "pluralName": "our-programs",
+    "displayName": "Our Program",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "author": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "cardTitle": {
+      "type": "richtext"
+    },
+    "cardSubtitle": {
+      "type": "richtext"
+    },
+    "cardLink": {
+      "type": "string"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    }
+  }
+}

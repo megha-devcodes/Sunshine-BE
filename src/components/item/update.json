@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_item_updates",
+  "info": {
+    "displayName": "Update"
+  },
+  "options": {},
+  "attributes": {
+    "updateTitle": {
+      "type": "string"
+    },
+    "updateDescription": {
+      "type": "richtext"
+    },
+    "updateIcon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "daily_updates",
+  "info": {
+    "singularName": "daily-update",
+    "pluralName": "daily-updates",
+    "displayName": "DailyUpdate",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "updateTitle": {
+      "displayName": "Update",
+      "type": "component",
+      "repeatable": true,
+      "component": "item.update"
+    }
+  }
+}

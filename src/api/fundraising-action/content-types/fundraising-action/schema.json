@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fundraising_actions",
+  "info": {
+    "singularName": "fundraising-action",
+    "pluralName": "fundraising-actions",
+    "displayName": "FundraisingAction",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
