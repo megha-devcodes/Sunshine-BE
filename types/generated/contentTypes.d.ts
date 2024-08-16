@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -734,90 +781,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiAboutUsAboutUs extends Schema.CollectionType {
-  collectionName: 'about_uses';
-  info: {
-    singularName: 'about-us';
-    pluralName: 'about-uses';
-    displayName: 'WhoWeAre';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    subtitle: Attribute.String;
-    Content: Attribute.RichText;
-    buttonText: Attribute.String;
-    buttonLink: Attribute.String;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    backgroundImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::about-us.about-us',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::about-us.about-us',
       'oneToOne',
       'admin::user'
     > &
@@ -995,6 +958,44 @@ export interface ApiDailyUpdateDailyUpdate extends Schema.CollectionType {
   };
 }
 
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Attribute.Media<'images'> & Attribute.Required;
+    logoText: Attribute.String;
+    email: Attribute.Email;
+    contact: Attribute.String;
+    footer: Attribute.Component<'menu.link', true>;
+    copyrightText: Attribute.Text;
+    socialmedia: Attribute.Component<'link.socialmedia', true>;
+    donation: Attribute.Component<'button.link'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFundraisingActionFundraisingAction
   extends Schema.CollectionType {
   collectionName: 'fundraising_actions';
@@ -1072,6 +1073,7 @@ export interface ApiHelpActionHelpAction extends Schema.CollectionType {
     singularName: 'help-action';
     pluralName: 'help-actions';
     displayName: 'HelpAction';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1080,6 +1082,7 @@ export interface ApiHelpActionHelpAction extends Schema.CollectionType {
     title: Attribute.String;
     subtitle: Attribute.RichText;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    hii: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1363,6 +1366,41 @@ export interface ApiVolunteerBannerVolunteerBanner extends Schema.SingleType {
   };
 }
 
+export interface ApiWhoWeAreWhoWeAre extends Schema.SingleType {
+  collectionName: 'who_we_ares';
+  info: {
+    singularName: 'who-we-are';
+    pluralName: 'who-we-ares';
+    displayName: 'Who We Are';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.String;
+    description: Attribute.RichText;
+    buttonText: Attribute.String;
+    buttonLink: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::who-we-are.who-we-are',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::who-we-are.who-we-are',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1377,16 +1415,16 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
-      'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::become-volunteer.become-volunteer': ApiBecomeVolunteerBecomeVolunteer;
       'api::contact.contact': ApiContactContact;
       'api::contact-form.contact-form': ApiContactFormContactForm;
       'api::core-service.core-service': ApiCoreServiceCoreService;
       'api::daily-update.daily-update': ApiDailyUpdateDailyUpdate;
+      'api::footer.footer': ApiFooterFooter;
       'api::fundraising-action.fundraising-action': ApiFundraisingActionFundraisingAction;
       'api::header.header': ApiHeaderHeader;
       'api::help-action.help-action': ApiHelpActionHelpAction;
@@ -1398,6 +1436,7 @@ declare module '@strapi/types' {
       'api::slider-image.slider-image': ApiSliderImageSliderImage;
       'api::trustee.trustee': ApiTrusteeTrustee;
       'api::volunteer-banner.volunteer-banner': ApiVolunteerBannerVolunteerBanner;
+      'api::who-we-are.who-we-are': ApiWhoWeAreWhoWeAre;
     }
   }
 }
